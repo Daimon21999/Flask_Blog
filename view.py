@@ -16,5 +16,5 @@ from flask import render_template
 @app.route('/')
 def index():
     name = 'Dima Hinev'
-    return render_template('index.html',name=name)
+    return render_template('index.html', name=name)
 

@@ -16,5 +16,5 @@ def index():
 @posts.route('/<slug>')
 # здесь тоже что и в <>, т.е slug
 def post_detail(slug):
-    post = Post.query.filter(Post.slug==slug).first()
+    post = Post.query.filter(Post.slug == slug).first()
     return render_template('posts/post_detail.html', post=post)

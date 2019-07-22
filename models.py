@@ -1,3 +1,24 @@
+###################
+# Добавить ТЭГ в БД
+#   from app import db
+#   from models import Tag
+#   tag = Tag(name='python')
+#   db.session.add(tag) //добавить в сессию
+#   db.session.commit() //запись в БД
+#
+#
+#
+#
+#
+#
+#
+
+
+
+
+
+
+
 from app import db
 from datetime import datetime
 # regular expression lib
@@ -36,3 +57,16 @@ class Post(db.Model):
     # representation(представление при выводе на экран(аналог toString))
     def __repr__(self):
         return '<Post id: {0}, title: {1}>'.format(self.id, self.title)
+
+
+class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    slug = db.Column(db.String(100))
+
+    def __init__(self, *args, **kwargs):
+        super(Tag, self).__init__(*args, **kwargs)
+        self.slug = slugify(self.name)
+
+    def __repr__(self):
+        return '<Tag id: {}, name: {}>'.format(self.id, self.name)
